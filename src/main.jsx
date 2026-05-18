@@ -1,12 +1,21 @@
-import ReactDOM from 'react-dom/client'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
 
-import './index.css'
-import React from 'react'
-import { RouterProvider } from 'react-router'
-import { router } from './routes/router.jsx'
+import {
+  RouterProvider,
+} from "react-router";
+
+import { router } from './routes/router';
+
+import AuthProvider from './providers/AuthProvider';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-   <RouterProvider router={router}/>
+
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
+
   </React.StrictMode>,
 )
