@@ -3,7 +3,7 @@
 const AddTutorPage = () => {
     return (
         <div>
-            
+            <h1>Add Tutor</h1>
         </div>
     );
 };

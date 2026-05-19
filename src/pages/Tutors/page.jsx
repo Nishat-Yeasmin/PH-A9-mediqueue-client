@@ -2,7 +2,9 @@
 
 const TutorsPage = () => {
     return (
-        <div>
+        <div className="text-center mt-10 text-3xl font-bold">
+
+            All Tutors
             
         </div>
     );
