@@ -1,11 +1,12 @@
 // import React from 'react';
-import { useContext } from "react";
-import { AuthContext } from "../../provider/AuthProvider";
-import { toast } from "react-toastify";
+
+
+import { toast } from "react-hot-toast";
+import useAuth from "../../hooks/useAuth";
 
 const AddTutorPage = () => {
 
-     const { user } = useContext(AuthContext);
+     const { user } = useAuth();
 
   const handleAddTutor = (e) => {
 

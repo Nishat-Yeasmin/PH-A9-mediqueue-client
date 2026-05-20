@@ -1,14 +1,14 @@
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { toast } from "react-toastify";
-import { AuthContext } from "../../provider/AuthProvider";
+import { toast } from "react-hot-toast";
+import useAuth from "../../hooks/useAuth";
 
 const TutorDetailsPage = () => {
 
   const { id } = useParams();
 
-  const { user } = useContext(AuthContext);
+  const { user } = useAuth();
 
   const [tutor, setTutor] = useState({});
 
