@@ -55,39 +55,78 @@ const Navbar = () => {
         </ul>
       </div>
 
-      <div className="navbar-end">
+      <div className="navbar-end gap-3">
 
         {
           user ? (
-            <div className="flex items-center gap-3">
 
-              <img
-                src={user.photoURL}
-                alt=""
-                className="w-10 h-10 rounded-full"
-              />
+            <div className="dropdown dropdown-end">
 
-              <button
-                onClick={handleLogout}
-                className="btn btn-primary"
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
               >
-                Logout
-              </button>
+
+                <div className="w-10 rounded-full overflow-hidden">
+
+                  <img
+                    src={user.photoURL  || "https://i.ibb.co/2nzwFgd/default-user.png"}
+                    alt="profile"
+                  />
+
+                </div>
+
+              </div>
+
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow"
+              >
+
+                <li>
+                  <p>{user.displayName}</p>
+                </li>
+
+                   <li>
+    <Link to="/profile">
+      Profile
+    </Link>
+  </li>
+                <li>
+                  <button onClick={handleLogout}>
+                    Logout
+                  </button>
+                </li>
+
+              </ul>
 
             </div>
+            
           ) : (
+            <>
+            
             <Link
               to="/login"
               className="btn btn-primary"
             >
               Login
             </Link>
+
+            <Link
+              to="/register"
+              className="btn btn-outline btn-primary"
+            >
+              Register
+            </Link>
+            </>
           )
         }
 
       </div>
 
     </div>
+
 
     );
 };

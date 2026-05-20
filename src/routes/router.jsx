@@ -9,7 +9,7 @@ import MyTutors from "../pages/MyTutors/page";
 import MyBookedSessions from "../pages/MyBookedSessions/page";
 import TutorsPage from "../pages/Tutors/page";
 import ErrorPage from "../pages/ErrorPage/page";
-
+import TutorDetailsPage from "../pages/TutorDetails/page";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -32,6 +32,14 @@ export const router = createBrowserRouter([
                 path: "/register",
                 element: <RegisterPage/>,
             },
+            {
+  path: "/tutorDetails/:id",
+  element: (
+    <PrivateRoute>
+      <TutorDetailsPage />
+    </PrivateRoute>
+  ),
+},
             {
                 path: "/addTutor",
                 element: (
