@@ -10,3 +10,12 @@ Live Website:
 - Users can book tutors from the tutors page.
 - Dark and Light theme toggle is available.
 - Responsive design for mobile, tablet, and desktop.
+
+## Technologies Used
+
+- React
+- Firebase
+- MongoDB
+- Express.js
+- Node.js
+- Tailwind CSS
