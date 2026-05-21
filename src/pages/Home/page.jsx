@@ -32,37 +32,48 @@ const HomePage = () => {
 
         {/* Tutors Grid */}
         <div className="grid md:grid-cols-3 gap-6 mt-10">
+         
+    
+      {
+       !tutors.length ? (
+      <div className="col-span-3 flex justify-center py-10">
+        <span className="loading loading-dots loading-xl"></span>
+      </div>
+    ) : (
+      tutors.map((tutor) => (
 
-          {tutors.map((tutor) => (
-            <div key={tutor._id} className="card bg-base-100 shadow-xl p-5">
+        
+        <div key={tutor._id} className="card bg-base-100 shadow-xl p-5">
 
-              <img
-                src={tutor.photo}
-                alt={tutor.name}
-                className="h-60 w-full object-center rounded-xl"
-              />
+          <img
+            src={tutor.photo}
+            alt={tutor.name}
+            className="h-60 w-full object-center rounded-xl"
+          />
 
-              <h2 className="text-xl text-green-700 font-bold mt-3">
-                {tutor.name}
-              </h2>
+          <h2 className="text-xl text-green-700 font-bold mt-3">
+            {tutor.name}
+          </h2>
 
-              <p className="text-sm text-gray-500">
-                {tutor.subject}
-              </p>
+          <p className="text-sm text-gray-500">
+            {tutor.subject}
+          </p>
 
-              <p className="mt-2 font-semibold">
-                Tk.{tutor.fee}
-              </p>
+          <p className="mt-2 font-semibold">
+            Tk.{tutor.fee}
+          </p>
 
-              <Link
-                to={`/tutor/${tutor._id}`}
-                className="btn btn-primary mt-4"
-              >
-                Book Session
-              </Link>
+          <Link
+            to={`/tutor/${tutor._id}`}
+            className="btn btn-primary mt-4"
+          >
+            Book Session
+          </Link>
 
-            </div>
-          ))}
+        </div>
+      ))
+    )}
+            
 
         </div>
       </div>
