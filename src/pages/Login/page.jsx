@@ -11,6 +11,8 @@ const LoginPage = () => {
 
   const from = location.state || "/";
 
+  // ------------------------------
+  
   const handleLogin = async (e) => {
 
     e.preventDefault();
@@ -24,9 +26,10 @@ const LoginPage = () => {
 
       await loginUser(email, password);
 
+
       toast.success("Login Successful");
 
-      navigate(from);
+      navigate(from,{replace:true});
 
     } catch (error) {
       toast.error(error.message);
@@ -38,6 +41,7 @@ const LoginPage = () => {
     try {
 
       await googleLogin();
+
 
       toast.success("Google Login Successful");
 

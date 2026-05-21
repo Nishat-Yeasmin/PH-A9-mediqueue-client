@@ -2,9 +2,7 @@ import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
 const PrivateRoute = ({ children }) => {
-
   const { user, loading } = useAuth();
-
   const location = useLocation();
 
   if (loading) {
@@ -14,8 +12,9 @@ const PrivateRoute = ({ children }) => {
   if (!user) {
     return (
       <Navigate
-        state={location.pathname}
         to="/login"
+        state={ location.pathname}
+        replace
       />
     );
   }

@@ -33,7 +33,7 @@ export const router = createBrowserRouter([
                 element: <RegisterPage/>,
             },
             {
-  path: "/tutorDetails/:id",
+  path: "/tutors/:id",
   element: (
     <PrivateRoute>
       <TutorDetailsPage />

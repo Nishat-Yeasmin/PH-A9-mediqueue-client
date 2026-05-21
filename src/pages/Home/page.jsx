@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const HomePage = () => {
+ 
   const [tutors, setTutors] = useState([]);
 
   useEffect(() => {
@@ -11,6 +12,7 @@ const HomePage = () => {
       .then((data) => setTutors(data));
   }, []);
 
+  
   return (
     <div>
 

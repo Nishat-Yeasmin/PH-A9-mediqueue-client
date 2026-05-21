@@ -11,6 +11,9 @@ const TutorDetailsPage = () => {
   const { user } = useAuth();
 
   const [tutor, setTutor] = useState({});
+  const [loading, setLoading] = useState(true);
+ const safeSlot = Number(tutor.totalSlot || 0);
+
 
   useEffect(() => {
 
@@ -18,13 +21,21 @@ const TutorDetailsPage = () => {
       .get(`http://localhost:5000/tutors/${id}`)
       .then(res => {
         setTutor(res.data);
+      })
+      .catch(err => {
+        console.error(err);
+        toast.error("Failed to load tutor details");
+      })
+      .finally(() => {
+        setLoading(false);
       });
 
   }, [id]);
 
   const handleBooking = async () => {
+    
 
-    if (tutor.totalSlot === 0) {
+    if (safeSlot <= 0) {
 
       toast.error("No available slots left");
 
@@ -32,10 +43,12 @@ const TutorDetailsPage = () => {
     }
 
     const today = new Date();
+     today.setHours(0, 0, 0, 0);
 
     const sessionDate = new Date(tutor.sessionDate);
+    sessionDate.setHours(0, 0, 0, 0);
 
-    if (today < sessionDate) {
+    if (today > sessionDate) {
 
       toast.error("Booking is not available yet for this tutor");
 
@@ -47,41 +60,52 @@ const TutorDetailsPage = () => {
       studentName: user?.displayName,
       studentEmail: user?.email,
       tutorId: tutor._id,
-      tutorName: tutor.tutorName,
+      tutorName: tutor.tutorName || tutor.name,
+      sessionDate: tutor.sessionDate,
+      fee: tutor.fee,
       bookStatus: "Booked"
 
     };
 
-    axios
-      .post("http://localhost:5000/bookings", bookingData)
-      .then(res => {
-
-        if (res.data.insertedId) {
-
-          toast.success("Session Booked Successfully");
-
-          setTutor({
-            ...tutor,
-            totalSlot: tutor.totalSlot - 1
-          });
-        }
-      });
+   try {
+      const res = await axios.post("http://localhost:5000/bookings", bookingData);
+      
+      if (res.data.insertedId) {
+        toast.success("Session Booked Successfully");
+        
+        
+        setTutor(prev => ({
+          ...prev,
+          totalSlot: prev.totalSlot - 1
+        }));
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Booking failed. Please try again.");
+    }
   };
 
+  if (loading){
+    return (
+      <div className="max-w-5xl mx-auto py-20 text-center">
+        <p className="text-xl">Loading tutor details...</p>
+      </div>
+    );
+  }
   return (
 
-    <div className="max-w-5xl mx-auto py-16">
+    <div className="max-w-5xl mx-auto py-10">
 
       <img
         src={tutor.photo}
         alt=""
-        className="w-full h-[450px] object-cover rounded-xl"
+        className="h-[250px] object-center rounded-xl"
       />
 
-      <div className="mt-8 space-y-3">
+      <div className="mt-6 space-y-2">
 
         <h1 className="text-4xl font-bold">
-          {tutor.tutorName}
+          {tutor.name}
         </h1>
 
         <p>
@@ -93,7 +117,7 @@ const TutorDetailsPage = () => {
         </p>
 
         <p>
-          Total Slot: {tutor.totalSlot}
+          Total Slot: {safeSlot}
         </p>
 
         <p>
@@ -106,6 +130,7 @@ const TutorDetailsPage = () => {
 
         <button
           onClick={handleBooking}
+          disabled={safeSlot <= 0}
           className="btn btn-primary mt-5"
         >
           Book Session

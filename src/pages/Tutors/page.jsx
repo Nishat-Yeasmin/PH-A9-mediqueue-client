@@ -64,7 +64,7 @@ const TutorsPage = () => {
                 </p>
 
                 <Link
-                  to={`/tutorDetails/${tutor._id}`}
+                  to={`/tutors/${tutor._id}`}
                   className="btn btn-primary mt-4"
                 >
                   Book Session
