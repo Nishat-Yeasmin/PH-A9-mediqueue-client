@@ -1,5 +1,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import { Link } from 'react-router-dom';
 
 const Banner = () => {
 
@@ -28,9 +29,9 @@ const Banner = () => {
             Book your online learning sessions easily
           </p>
 
-          <button className="btn btn-primary mt-6">
-            Browse Tutors
-          </button>
+          <Link to="/tutors" className="btn btn-primary mt-6">
+  Browse Tutors
+</Link>
 
         </div>
 </div>

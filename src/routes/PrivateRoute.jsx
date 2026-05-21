@@ -6,7 +6,11 @@ const PrivateRoute = ({ children }) => {
   const location = useLocation();
 
   if (loading) {
-    return <p className="text-center mt-10">Loading...</p>;
+    return (
+       <div className="min-h-screen flex justify-center items-center">
+        <span className="loading loading-dots loading-xl"></span>
+      </div>
+    )
   }
 
   if (!user) {
