@@ -7,9 +7,13 @@ const HomePage = () => {
   const [tutors, setTutors] = useState([]);
 
   useEffect(() => {
-    fetch("https://ph-a9-mediqueue-server-8q1fbds3y.vercel.app/api/tutors?limit=6")
+    fetch("https://ph-a9-mediqueue-server-5xzhtn0op.vercel.app/api/tutors?limit=6")
       .then((res) => res.json())
-      .then((data) => setTutors(data))
+      .then((data) =>
+        {
+          console.log(data);
+          setTutors(data);
+        } )
       .catch((err) => console.log(err));
   }, []);
 
