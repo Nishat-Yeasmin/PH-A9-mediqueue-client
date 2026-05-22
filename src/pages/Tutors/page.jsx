@@ -9,7 +9,7 @@ const TutorsPage = () => {
   useEffect(() => {
 
     axios
-      .get("http://localhost:5000/api/tutors")
+      .get("https://mediqueue-server-tau.vercel.app/api/tutors")
       .then(res => {
         setTutors(res.data);
       })

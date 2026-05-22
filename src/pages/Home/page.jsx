@@ -118,7 +118,6 @@ const HomePage = () => {
         </div>
       </div>
 
-      {/* ================= EXTRA SECTION 2 ================= */}
       <div className="py-16">
         <div className="max-w-6xl mx-auto">
 

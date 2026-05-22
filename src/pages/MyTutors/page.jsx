@@ -13,7 +13,7 @@ const MyTutorsPage = () => {
   useEffect(() => {
     if (!user?.email) return;
 
-    axios.get(`http://localhost:5000/api/tutors?userEmail=${user.email}`)
+    axios.get(`https://mediqueue-server-tau.vercel.app/api/tutors?userEmail=${user.email}`)
       .then(res => {
         setMyTutors(res.data);
       })
@@ -29,7 +29,7 @@ const MyTutorsPage = () => {
     if (!window.confirm("Are you sure you want to delete this tutor?")) return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/tutors/${id}`);
+      await axios.delete(`https://mediqueue-server-tau.vercel.app/api/tutors/${id}`);
       setMyTutors(prev => prev.filter(t => t._id !== id));
       toast.success("Tutor deleted successfully");
     } catch (error) {
@@ -49,7 +49,7 @@ const MyTutorsPage = () => {
     if (!editingTutor) return;
 
     try {
-      await axios.put(`http://localhost:5000/api/tutors/${editingTutor._id}`, editingTutor);
+      await axios.put(`https://mediqueue-server-tau.vercel.app/api/tutors/${editingTutor._id}`, editingTutor);
       
       setMyTutors(prev => prev.map(t => t._id === editingTutor._id ? editingTutor : t));
       setEditingTutor(null);

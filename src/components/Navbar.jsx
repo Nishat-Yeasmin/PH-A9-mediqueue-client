@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
+
 const Navbar = () => {
+   
      const { user, logoutUser } = useAuth();
 
   const handleLogout = () => {
@@ -120,8 +122,10 @@ const Navbar = () => {
               Register
             </Link>
             </>
+            
           )
         }
+
 
       </div>
 

@@ -32,7 +32,7 @@ const AddTutorPage = () => {
 
     };
 
-    fetch("http://localhost:5000/api/tutors", {
+    fetch("https://mediqueue-server-tau.vercel.app/api/tutors", {
       method: "POST",
       headers: {
         "content-type": "application/json"

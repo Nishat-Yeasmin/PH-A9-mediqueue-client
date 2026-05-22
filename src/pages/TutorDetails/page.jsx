@@ -12,13 +12,13 @@ const TutorDetailsPage = () => {
 
   const [tutor, setTutor] = useState({});
   const [loading, setLoading] = useState(true);
- const safeSlot = Number(tutor.totalSlot || 0);
+ const safeSlot = Number(tutor?.totalSlot ?? 0);
 
 
   useEffect(() => {
 
     axios
-      .get(`http://localhost:5000/api/tutors/${id}`)
+      .get(`https://mediqueue-server-tau.vercel.app/api/tutors/${id}`)
       .then(res => {
               console.log("ALL TUTORS RESPONSE:", res.data);
 
@@ -70,7 +70,7 @@ const TutorDetailsPage = () => {
     };
 
    try {
-      const res = await axios.post("http://localhost:5000/api/bookings", bookingData);
+      const res = await axios.post("https://mediqueue-server-tau.vercel.app/api/bookings", bookingData);
       
       if (res.data.insertedId) {
         toast.success("Session Booked Successfully");
