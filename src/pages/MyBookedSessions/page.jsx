@@ -15,7 +15,7 @@ const MyBookedSessions = () => {
   useEffect(() => {
     if (!user?.email) return;
 
-    axios.get(`http://localhost:5000/bookings?studentEmail=${user.email}`)
+    axios.get(`http://localhost:5000/api/bookings?studentEmail=${user.email}`)
     
       .then(res => {
         setBookings(res.data);
@@ -36,7 +36,7 @@ const MyBookedSessions = () => {
     setCancelingId(id);
 
     try {
-      const res = await axios.patch(`http://localhost:5000/bookings/${id}`, {
+      const res = await axios.patch(`http://localhost:5000/api/bookings/${id}`, {
         bookStatus: "Cancelled"
       });
 

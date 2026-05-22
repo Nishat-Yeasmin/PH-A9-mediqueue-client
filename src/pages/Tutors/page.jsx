@@ -9,7 +9,7 @@ const TutorsPage = () => {
   useEffect(() => {
 
     axios
-      .get("http://localhost:5000/tutors")
+      .get("http://localhost:5000/api/tutors")
       .then(res => {
         setTutors(res.data);
       });

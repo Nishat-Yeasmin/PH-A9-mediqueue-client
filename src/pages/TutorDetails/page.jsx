@@ -18,7 +18,7 @@ const TutorDetailsPage = () => {
   useEffect(() => {
 
     axios
-      .get(`http://localhost:5000/tutors/${id}`)
+      .get(`http://localhost:5000/api/tutors/${id}`)
       .then(res => {
         setTutor(res.data);
       })
@@ -68,7 +68,7 @@ const TutorDetailsPage = () => {
     };
 
    try {
-      const res = await axios.post("http://localhost:5000/bookings", bookingData);
+      const res = await axios.post("http://localhost:5000/api/bookings", bookingData);
       
       if (res.data.insertedId) {
         toast.success("Session Booked Successfully");

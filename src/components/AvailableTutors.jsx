@@ -9,7 +9,7 @@ const AvailableTutors = () => {
   useEffect(() => {
 
     axios
-      .get("http://localhost:5000/tutors?limit=6")
+      .get("http://localhost:5000/api/tutors?limit=6")
       .then(res => {
         setTutors(res.data);
       });
