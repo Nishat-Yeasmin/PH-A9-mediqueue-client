@@ -7,11 +7,11 @@ const HomePage = () => {
   const [tutors, setTutors] = useState([]);
 
   useEffect(() => {
-    fetch("https://ph-a9-mediqueue-server-5xzhtn0op.vercel.app/api/tutors?limit=6")
+    fetch("https://mediqueue-server-tau.vercel.app/api/tutors?limit=6")
       .then((res) => res.json())
       .then((data) =>
         {
-          console.log(data);
+          console.log("HOME API RESPONSE:",data);
           setTutors(data);
         } )
       .catch((err) => console.log(err));
@@ -21,10 +21,10 @@ const HomePage = () => {
   return (
     <div>
 
-      {/* ================= BANNER ================= */}
+     
       <Banner />
 
-      {/* ================= AVAILABLE TUTORS ================= */}
+      
       <div className="max-w-7xl mx-auto py-16">
 
         <h1 className="text-4xl font-bold text-center">
@@ -69,7 +69,7 @@ const HomePage = () => {
           </p>
 
           <Link
-            to={`/tutor/${tutor._id}`}
+            to={`/api/tutors/${tutor._id}`}
             className="btn btn-primary mt-4"
           >
             Book Session
@@ -83,7 +83,7 @@ const HomePage = () => {
         </div>
       </div>
 
-      {/* ================= EXTRA SECTION 1 ================= */}
+      
       <div className="bg-base-200 py-16">
         <div className="max-w-6xl mx-auto text-center">
 

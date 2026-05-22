@@ -12,8 +12,8 @@ const TutorsPage = () => {
       .get("http://localhost:5000/api/tutors")
       .then(res => {
         setTutors(res.data);
-      });
-
+      })
+       .catch(err => console.log(err));
   }, []);
 
     return (

@@ -20,6 +20,8 @@ const TutorDetailsPage = () => {
     axios
       .get(`http://localhost:5000/api/tutors/${id}`)
       .then(res => {
+              console.log("ALL TUTORS RESPONSE:", res.data);
+
         setTutor(res.data);
       })
       .catch(err => {
